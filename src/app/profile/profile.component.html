@@ -1,0 +1,166 @@
+<div class="flex flex-row justify-between mx-5 lg:mx-10 py-5">
+    <div class="flex flex-col lg:flex-row justify-between w-full items-center">
+        <div class="flex flex-col">
+            <h1 class="text-lg font-semibold">
+                {{openTabName}}
+            </h1>
+            <div>
+                <a href="" class="text-sm mr-2 text-gray-500">Profile</a>
+                <a href="" class="text-sm mr-2">{{openTabName}}</a>
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="px-5">
+                <span class="text-sm font-semibold text-gray-700 mr-2">
+                    Sort By:
+                </span>
+                <select class="p-2 rounded-md border-gray-200">
+                    <option>Latest</option>
+                    <option>In Progress</option>
+                    <option>Done</option>
+                </select>
+            </div>
+            <div class="flex flex-row justify-center items-center text-sm font-semibold text-gray-700 px-5">
+                Impact Level:
+            </div>
+        </div>
+        <div class="flex flex-row justify-center items-center">
+            <span class="text-sm font-semibold text-gray-700 px-2">Quick Tools:</span>
+            <i class="fa fa-file text-xl text-gray-300 px-2"></i>
+            <i class="fa fa-file text-xl text-gray-300 px-2"></i>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white mx-5 lg:mx-10 px-7 pt-7 pb-0 rounded-md">
+    <div class="flex flex-col lg:flex-row justify-between">
+        <div class="lg:w-1/4">
+            <img src="assets/profile.jpg" class="rounded-md profile-img">
+        </div>
+        <div class="flex flex-col lg:w-1/2">
+            <div class="flex flex-row items-center my-2 lg:my-0">
+                <h1 class="text-lg font-semibold mr-2">Max Smith</h1>
+                <i class="fa fa-certificate mr-2 icon-color"></i>
+                <small class="upgradeBtn">Upgrade to Pro</small>
+            </div>
+            <div class="flex flex-wrap text-gray-400 my-2">
+                <div class="mr-4 font-semibold">
+                    <i class="fa fa-user mr-1"></i>
+                    Developer
+                </div>
+                <div class="mr-4 font-semibold">
+                    <i class="fa fa-location-dot mr-1"></i>
+                    SF, Bay Area
+                </div>
+                <div class="mr-4 font-semibold">
+                    <i class="fa fa-envelope mr-1"></i>
+                    max@kt.com
+                </div>
+            </div>
+            <div class="flex flex-col lg:flex-row my-5">
+                <div class="flex flex-col profile-card-border my-2 lg:my-0 mr-4">
+                    <div>
+                        <i class="fa fa-arrow-up icon-success mr-2"></i>
+                        <span class="font-bold text-xl">4500$</span>
+                    </div>
+                    <div class="text-gray-400 font-bold">Earnings</div>
+                </div>
+                <div class="flex flex-col profile-card-border my-2 lg:my-0 mr-4">
+                    <div>
+                        <i class="fa fa-arrow-down icon-alert mr-2"></i>
+                        <span class="font-bold text-xl">75</span>
+                    </div>
+                    <div class="text-gray-400 font-bold">Projects</div>
+                </div>
+                <div class="flex flex-col profile-card-border my-2 lg:my-0 mr-4">
+                    <div>
+                        <i class="fa fa-arrow-up icon-success mr-2"></i>
+                        <span class="font-bold text-xl">60%</span>
+                    </div>
+                    <div class="text-gray-400 font-bold">Success Rate</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col place-content-between lg:w-1/4">
+            <div class="flex flex-row lg:justify-end my-2 lg:my-0">
+                <button class="btn font-semibold mr-2 bg-follow">Follow</button>
+                <button class="btn font-semibold mr-2">Hire Me</button>
+                <div class="bg-follow px-2 rounded-md flex items-center">
+                    <i class="fa fa-ellipsis"></i>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-row justify-between">
+                    <div class="mb-1 text-base font-medium text-gray-400">Profile Compleation</div>
+                    <div>50%</div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                    <div class="progress-bg h-2 rounded-full" style="width: 50%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-wrap">
+        <div class="w-full">
+            <ul class="flex mb-0 list-none flex-wrap pt-3 pb-3 flex-row">
+                <li class="mr-2 last:mr-0 text-center p-3 lg:p-0">
+                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+                        (click)="toggleTabs(1,'Overview')" routerLink="overview"
+                        [ngClass]="{'active-tab': openTab === 1,'active-tabs':router.url=='/main-layout/profile/overview'}">
+                        Overview
+                    </a>
+                </li>
+                <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+                        (click)="toggleTabs(2,'Projects')" routerLink="projects"
+                        [ngClass]="{'active-tab':openTab === 2,'active-tabs':router.url=='/main-layout/profile/projects'}">
+                        Projects
+                    </a>
+                </li>
+                <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+                        (click)="toggleTabs(3,'Campaigns')" routerLink="campaigns"
+                        [ngClass]="{'active-tab': openTab === 3,'active-tabs':router.url=='/main-layout/profile/campaigns'}">
+                        Campaigns
+                    </a>
+                </li>
+                <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+                        (click)="toggleTabs(4,'Documents')" routerLink="documents"
+                        [ngClass]="{'active-tab': openTab === 4,'active-tabs':router.url=='/main-layout/profile/documents'}">
+                        Documents
+                    </a>
+                </li>
+                <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+                        (click)="toggleTabs(5,'Followers')" routerLink="followers"
+                        [ngClass]="{'active-tab': openTab === 5,'active-tabs':router.url=='/main-layout/profile/followers'}">
+                        Followers
+                    </a>
+                </li>
+                <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+                        (click)="toggleTabs(6,'Activity')" routerLink="activity"
+                        [ngClass]="{'active-tab': openTab === 6,'active-tabs':router.url=='/main-layout/profile/activity'}">
+                       Activity
+                    </a>
+                </li> 
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="relative flex mx-5 lg:mx-10 my-7 flex-col break-words mb-6">
+    <router-outlet></router-outlet>
+</div>
+<div class="flex flex-col lg:flex-row items-center bg-white py-4 px-10">
+    <div class="w-1/2">
+        <span class="text-gray-400">2023 © </span>Keenthemes
+    </div>
+    <div class="flex flex-row w-1/2 justify-end">
+        <a href="" class="text-gray-400 text-sm font-semibold mr-3">About</a>
+        <a href="" class="text-gray-400 text-sm font-semibold mr-3">Support</a>
+        <a href="" class="text-gray-400 text-sm font-semibold">Purchase</a>
+    </div>
+</div>

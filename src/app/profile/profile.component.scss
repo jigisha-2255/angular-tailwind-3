@@ -1,0 +1,53 @@
+select{
+    border-radius:5px;
+}
+.profile-img{
+    height:200px;
+    width:200px;
+}
+.btn{
+    background:#009ef7; 
+    color:#fff;
+    padding:7px 15px;
+    border-radius: 10px;
+    font-size:12px;
+}
+.bg-follow{
+    background-color: #f0f0f0;
+    color:gray;
+}
+.progress-bg{
+    background:#50CD89;
+}
+.upgradeBtn{
+    background:#e8fff3;
+    color:#50CD89;
+    font-weight: bold;
+    border-radius:5px;
+    padding:5px;
+}
+.icon-color{
+    color:#009ef7;
+}
+.icon-success{
+    color:#50CD89;
+}
+.icon-alert{
+    color:#f1416c;
+}
+.profile-card-border{
+    border:2px solid #f0f0f0;
+    border-radius: 10px;
+    padding:5px 15px;
+    border-style:dashed;
+    width:140px;
+}
+.active-tab,.active-tabs{
+    border-bottom:2px solid #009ef7;
+    color:#009ef7;
+}
+.inactive-tab{
+    border:none;
+    color:gray;
+    font-weight: bold;
+}

@@ -1,0 +1,232 @@
+<!-- Sidebar -->
+<div class="sidebar" [class.sidebar-close]="!openSidebar" [ngStyle]="{background:sidebg}">
+    <div class="logo-details flex justify-center">
+      <img src="https://angular.tw/assets/images/logos/angular/logo-nav@2x.png" *ngIf="openSidebar" style="height:40px;">
+      <img src="assets/icon.png" *ngIf="!openSidebar" style="height:40px;">
+    </div>
+  
+    <ul class="nav-links" style="height:80%;" id="nav-links">
+      <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
+        <h1 class="uppercase text-gray-400 text-xs ml-5 font-semibold tracking-widest mt-10 mb-5"
+          *ngIf="item.heading && openSidebar">
+          {{item.heading}}</h1>
+        <h1 class="uppercase text-gray-400 text-xs ml-5 font-semibold tracking-widest mt-10 mb-5"
+          *ngIf="item.heading && !openSidebar"></h1>
+        <ul>
+          <li class="dropdown-title flex-col w-full" *ngFor="let subPart of item.subpart" #itemEl3>
+            <a *ngIf="subPart.link!='null'" [routerLink]="[subPart.link]" routerLinkActive="active"
+              class="text-gray-400 text-sm font-semibold">
+              <i [class]="subPart.icon" class="link_icon"></i>
+              <span class="link_name">{{subPart.link_name}}</span>
+            </a>
+            <a *ngIf="subPart.link=='null'" class="text-gray-400 text-sm font-semibold flex flex-row"
+              (click)="showSubmenu(itemEl3)">
+              <i [class]="subPart.icon" class="link_icon"></i>
+              <span class="link_name">{{subPart.link_name}}</span>
+              <i class="fa fa-angle-down text-gray-400 text-sm font-semibold mr-1 absolute right-0"
+                style="font-size:12px;" *ngIf="openSidebar"></i>
+            </a>
+            <ul class="sub-menu">
+              <li #itemEl2 *ngFor="let item_sub of subPart.sub_menu">
+                <div *ngIf="item_sub.submenu2.length == 0">
+                  <a class="text-gray-400 text-sm font-semibold" routerLink="{{item_sub.link}}"
+                    routerLinkActive="active">{{item_sub.link_name}}</a>
+                </div>
+                <div class="flex flex-row" *ngIf="item_sub.submenu2.length > 0">
+                  <a class="text-gray-400 text-sm font-semibold"
+                    (click)="showSubmenu2(itemEl2)">{{item_sub.link_name}}</a>
+                  <i class="fa fa-angle-down text-gray-400 text-sm font-semibold" style="font-size:12px;"></i>
+                </div>
+                <ul class="sub-menu sub-menu2">
+                  <li *ngFor="let itemsub of item_sub.submenu2">
+                    <a class="text-gray-400 text-sm font-semibold" [routerLink]="[itemsub.link]"
+                      routerLinkActive="active">{{itemsub.link_name}}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+  
+      </li>
+    </ul>
+  
+    <div style="height:10%;" class="flex flex-row items-center justify-center py-5">
+      <button class="btn-docs w-full mx-5" *ngIf="openSidebar">Docs & Components</button>
+      <div *ngIf="!openSidebar" style="height:40px; width:50px; background-color: #009ef7;" class="mx-3 rounded-lg"></div>
+    </div>
+  </div>
+  <section class="home-section">
+    <div class="grow flex flex-col" [ngStyle]="{background:headerbg}">
+      <!-- Header -->
+      <div class="flex flex-row items-center justify-between py-3 px-4 border-b border-gray-200">
+        <div class="hamburger-menu">
+          <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="openSidebar" />
+          <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
+            <i class="fa fa-angle-right text-gray-700" *ngIf="openSidebar"></i>
+            <i class="fa fa-bars text-gray-700" *ngIf="!openSidebar"></i>
+          </label>
+        </div>
+        <!-- <div class="top-menu flex flex-col" *ngFor="let link of menuSidebar">
+          <div class="mx-3 text-gray-700 text-sm font-semibold" (click)="showPanelClick(link.heading);">{{link.heading}}
+          </div>
+          <div class="mx-3 text-gray-700 text-sm font-semibold" *ngIf="link.heading==''">
+            <a href="{{list.link}}" [ngClass]="{'active-tabs':router.url==list.link}" *ngFor="let list of link.subpart">
+              <span *ngIf="list.link_name!='Mega Menu'">{{list.link_name}}</span>
+            </a>
+            <a *ngFor="let list of link.subpart">
+              <span *ngIf="list.link_name=='Mega Menu'"
+                (click)="isHidden=!isHidden; showpanel=false; showsubpanel=false;">{{list.link_name}}</span></a>
+          </div>         
+          <div *ngIf="showpanel==true" class="dropdown-menu bg-white rounded-xl"
+            style="position:absolute; top:65px; width:200px;">
+            <div class="vertical" *ngFor="let list of link.subpart">
+              <div *ngIf="isOpen == link.heading && list.sub_menu.length > 0"
+                class="px-5 py-2 flex flex-row justify-between">
+                <div class="w-3/4">
+                  <a class="dropdown-submenu dropdown-item item text-gray-700 text-sm font-semibold"
+                    (click)="showSubPanel(list.link_name)" style="color:red;">
+                    <i class="{{list.icon}} mr-2"></i>
+                    {{list.link_name }}
+                  </a>
+                </div>
+                <div class="w-1/4 text-end">
+                  <i class="fa fa-angle-right text-xs"></i>
+                </div>
+                <div class="dropdown-menu submenu-links">
+                </div>
+              </div>
+              <div class="vertical bg-white" *ngFor="let itemsub of list.sub_menu"
+                style="position:absolute; top:65px; left:40px; width:200px;">
+                <div *ngIf="subOpen == list.link_name && showsubpanel==true"
+                  class="px-5 py-2 flex flex-row justify-between">
+                  <div class="w-3/4">
+                    <a class="dropdown-submenu dropdown-item item text-gray-700 text-sm font-semibold" style="color:green;"
+                      >
+                      <i class="fa fa-book mr-2"></i>
+                      {{itemsub.link_name }}
+                    </a>
+                  </div>
+                  <div class="w-1/4 text-end">
+                    <i class="fa fa-angle-right text-xs"></i>
+                  </div>
+                  <div class="dropdown-menu submenu-links">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isHidden==true" style="position:absolute; top:65px; width:57%; z-index:1111;"
+            class="bg-white rounded-xl">
+            <div *ngFor="let list of link.subpart">
+              <div *ngIf="list.link_name=='Mega Menu'" class="px-10 py-5 flex flex-row">
+                <div class="flex flex-col w-1/2">
+                  <div class="flex flex-row w-full border-b py-5">
+                    <div class="w-1/2">
+                      <h1 class="text-md font-semibold">Layouts</h1>
+                      <ul class="text-gray-500 ml-5">
+                        <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
+                        <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
+                        <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
+                        <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
+                      </ul>
+                    </div>
+                    <div class="w-1/2">
+                      <h1 class="text-md font-semibold">Toolbars</h1>
+                      <ul class="text-gray-500 ml-5">
+                        <li class="my-3">Classic</li>
+                        <li class="my-3">Saas</li>
+                        <li class="my-3">Accounting</li>
+                        <li class="my-3">Extended</li>
+                        <li class="my-3">Reports</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="flex flex-row py-5">
+                    <div class="w-1/2">
+                      <h1 class="text-md font-semibold">Layout Builder</h1>
+                      <small class="text-gray-500 font-semibold">Customize View</small>
+                    </div>
+                    <div class="w-1/2 flex items-center">
+                      <button class="btn font-semibold">Try Builder</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-1/2">
+                  <img src="../assets/megamenu.jpg" class="rounded-xl">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div *ngFor="let link of menuSidebar">
+          <div class="mx-3 text-gray-700 text-sm font-semibold" *ngIf="link.heading==''">
+            <a href="{{list.link}}" [ngClass]="{'active-tabs':router.url==list.link}" *ngFor="let list of link.subpart">
+              <span *ngIf="list.link_name!='Mega Menu'">{{list.link_name}}</span>
+            </a>
+            <a *ngFor="let list of link.subpart">
+              <span *ngIf="list.link_name=='Mega Menu'"
+                (click)="isHidden=!isHidden;">{{list.link_name}}</span></a>
+          </div> 
+          <a (click)="show1=!show1; showPanelClick(link.heading);" *ngIf="link.heading!=''"
+            class="mx-3 text-gray-700 text-sm font-semibold">{{link.heading}}</a>
+          <div *ngFor="let list of link.subpart" class="bg-white flex flex-col vertical">
+            <div *ngIf="isOpen == link.heading && list.sub_menu.length > 0 && show1"
+              style="position:absolute; top:65px; width:200px;"
+              class="vertical flex flex-row bg-white dropdown-menu rounded-xl px-5 py-2">
+              <div class="w-3/4">
+                <a class="dropdown-submenu dropdown-item item text-gray-700 text-sm font-semibold"
+                  (click)="show2=!show2; showSubPanel(list.link_name)">
+                  <i class="fa fa-book mr-2"></i>
+                  {{list.link_name }}
+                </a>
+              </div>
+              <div class="w-1/4 text-end">
+                <i class="fa fa-angle-right text-xs"></i>
+              </div>
+              <div class="relative">
+                <div *ngIf="show2 && subOpen == list.link_name && showsubpanel==true"
+                  style="position:absolute; top:-10px; left:25px; width:200px;" class="bg-white flex flex-col vertical dropdown-menu rounded-xl px-5 py-2">
+                  <a class="dropdown-submenu dropdown-item px-5 py-2 item text-gray-700 text-sm font-semibold" *ngFor="let itemsub of list.sub_menu" routerLink="{{itemsub.link}}">{{itemsub.link_name}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="avatarDropdown==true"
+          style="position:absolute; top:65px; right:20px; border-radius:5px; z-index:1111;"
+          class="bg-white rounded-xl py-2 px-5">
+          <div class="flex flex-row items-center border-b pb-5">
+            <div>
+              <img src="../../assets/profile.jpg" class="profile-img mr-2">
+            </div>
+            <div class="text-gray-400 font-semibold text-sm">
+              {{userEmail}}
+            </div>
+          </div>
+          <div class="my-2">
+            <a class="text-gray-400 font-semibold text-sm">Sign Out</a>
+          </div>
+        </div>
+        <div class="w-1/2 text-sm flex flex-row justify-end items-center">
+          <i class="fa fa-search mx-3 text-gray-300"></i>
+          <i class="fa fa-message mx-3 text-gray-300"></i>
+          <i class="fa fa-comments mx-3 text-gray-300"></i>
+          <i class="fa fa-search mx-3 text-gray-300"></i>
+          <i class="fa fa-message mx-3 text-gray-300"></i>
+          <i class="fa fa-comments mx-3 text-gray-300"></i>
+          <img src="assets/avatar.jpg" class="avatar mx-3" (click)="avatarDropdown=!avatarDropdown;">
+        </div>
+      </div>
+  
+      <!-- routing section -->
+      <div class="grow flex flex-row bg-gray-100">
+        <div class="h-full w-full">
+          <router-outlet fxFlex></router-outlet>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Scroll top -->
+  <div class="scroll-top" (click)="onActivate()"></div>
