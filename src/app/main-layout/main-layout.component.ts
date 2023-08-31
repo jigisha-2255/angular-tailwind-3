@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MainLayoutService } from './main-layout.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,13 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-layout.component.scss']
 })
 export class MainLayoutComponent {
-  constructor(public router:Router){}
+  constructor(public router:Router,public layoutService:MainLayoutService){}
   title = 'ngx-tw';
   isOpen: any;
   subOpen: any;
   openSidebar: boolean = true;
-  sidebg = '#1e1e2d';
+  sidebg = '#131313';
+  sidecolor = '#fff';
   headerbg = 'rgb(243 244 246 / 1)';
+  headercolor = '#fff';
   show1=false;
   show2=false;
   userEmail=localStorage.getItem('LoggedInUser');
@@ -411,6 +414,12 @@ export class MainLayoutComponent {
     this.showsubpanel = true;
     this.subOpen = data;
     console.log(this.subOpen);
+  }
+  openTab:number=1;
+  openTabName!:string;
+  toggleTabs($tabNumber: number,name:string){
+    this.openTab = $tabNumber;
+    this.openTabName=name;
   }
 }
 
