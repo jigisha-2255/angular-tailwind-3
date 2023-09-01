@@ -4,9 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MainLayoutService {
-
-  darkMode=false;
+  darkMode:boolean=false;
+  openSidebar: boolean = true;
+  direction:string|null = 'ltr';
   constructor() {
-
-   }
+    this.darkMode=JSON.parse(localStorage.getItem('mode') || '{}');
+    this.direction=localStorage.getItem('direction');
+    console.log(this.direction);
+  }
 }

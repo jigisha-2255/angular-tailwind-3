@@ -60,8 +60,10 @@
     transform: translateY(-10px) rotate(45deg);
 }
 
-.home-section {
-    position: relative;
+.main-layout[dir="ltr"] .home-section {
+    // position: relative;
+    position: absolute;
+    top:0;
     background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%,
             rgba(37, 249, 245, 1) 0%,
             rgba(8, 70, 218, 1) 90%);
@@ -74,6 +76,21 @@
     flex-direction: column;
 }
 
+.main-layout[dir="rtl"] .home-section {
+    // position: relative;
+    position: absolute;
+    top:0;
+    background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%,
+            rgba(37, 249, 245, 1) 0%,
+            rgba(8, 70, 218, 1) 90%);
+    /* background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%, #25f9f5 0%, #0846da 90%); */
+    height: 100vh;
+    right: 260px;
+    width: calc(100% - 260px);
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+}
 .home-section .home-header {
     height: 80px;
     display: flex;
@@ -100,8 +117,69 @@
     color: white;
 }
 
+
+ul li {
+    list-style: disc;
+}
+
+ul.tabslist li {
+    list-style: none !important;
+}
+
+.active {
+    color: #fff;
+}
+
+
+.avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+}
+
+.btn {
+    background: #009ef7;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.btn-docs {
+    background: #009ef7;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.scroll-top {
+    background: #009ef7;
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+}
+
+.active-tabs {
+    background-color: #EAEEF2;
+    color: #009ef7;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+/*Sidemenu*/
+.main-layout[dir="rtl"] .sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 260px;
+    // background: white;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
 /* Sidebar */
-.sidebar {
+.main-layout[dir="ltr"] .sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -112,7 +190,10 @@
     transition: all 0.5s ease;
 }
 
-.sidebar.sidebar-close {
+.main-layout[dir="ltr"] .sidebar.sidebar-close {
+    width: 60px;
+}
+.main-layout[dir="rtl"] .sidebar.sidebar-close {
     width: 60px;
 }
 
@@ -236,7 +317,7 @@
 }
 
 /* Sub Menu */
-.sidebar .nav-links li .sub-menu {
+.main-layout[dir="ltr"] .sidebar .nav-links li .sub-menu {
     padding: 3px 3px 10px 60px;
     /* margin-top: -10px; */
     // background: white;
@@ -244,7 +325,17 @@
     transition: all 0.4s ease;
 }
 
-.sidebar .nav-links li .sub-menu .sub-menu2 {
+.main-layout[dir="rtl"] .sidebar .nav-links li .sub-menu {
+    padding: 3px 40px 3px 10px;
+    /* margin-top: -10px; */
+    // background: white;
+    display: none;
+    transition: all 0.4s ease;
+}
+
+
+
+.main-layout[dir="ltr"] .sidebar .nav-links li .sub-menu .sub-menu2 {
     padding: 3px 3px 14px 10px;
     /* margin-top: -10px; */
     // background: white;
@@ -252,15 +343,20 @@
     transition: all 0.4s ease;
 }
 
-ul li {
-    list-style: disc;
+
+.main-layout[dir="rtl"] .sidebar .nav-links li .sub-menu .sub-menu2 {
+    padding: 3px 3px 14px 10px;
+    /* margin-top: -10px; */
+    // background: white;
+    display: none;
+    transition: all 0.4s ease;
+}
+.main-layout[dir="ltr"] .sidebar .nav-links li.showMenu .sub-menu {
+    display: block;
+    width: 100%;
 }
 
-ul.tabslist li {
-    list-style: none !important;
-}
-
-.sidebar .nav-links li.showMenu .sub-menu {
+.main-layout[dir="rtl"] .sidebar .nav-links li.showMenu .sub-menu {
     display: block;
     width: 100%;
 }
@@ -293,9 +389,6 @@ ul.tabslist li {
     // color: white;
 }
 
-.active {
-    color: #fff;
-}
 
 .sidebar.sidebar-close .nav-links li .sub-menu {
     position: absolute;
@@ -363,52 +456,14 @@ ul.tabslist li {
     transform: translateY(-50%);
 }
 
-.sidebar.sidebar-close~.home-section {
+.main-layout[dir="ltr"] .sidebar.sidebar-close~.home-section {
     left: 60px;
     width: calc(100% - 60px);
 }
 
-.avatar {
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-}
-
-.btn {
-    background: #009ef7;
-    color: #fff;
-    padding: 5px 20px;
-    border-radius: 10px;
-}
-
-.btn-docs {
-    background: #009ef7;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-}
-
-.scroll-top {
-    background: #009ef7;
-    position: fixed;
-    right: 10px;
-    bottom: 50px;
-    height: 40px;
-    width: 40px;
-    border-radius: 5px;
-}
-
-.active-tabs {
-    background-color: #EAEEF2;
-    color: #009ef7;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.profile-img {
-    height: 40px;
-    width: 40px;
-    border-radius: 5px;
+.main-layout[dir="rtl"] .sidebar.sidebar-close~.home-section {
+    right: 60px;
+    width: calc(100% - 60px);
 }
 
 /* Hoverable Dropdown */
@@ -428,10 +483,54 @@ ul.tabslist li {
     display: inline-block;
 }
 
-.dropdown-content {
+// .dropdown-content {
+//     display: none;
+//     position: absolute;
+//     left: 0%;
+//     top: 40px;
+//     background-color: #fff;
+//     border-radius: 5px;
+//     min-width: 160px;
+//     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//     z-index: 1;
+// }
+.main-layout[dir="ltr"] .dropdown-content {
     display: none;
     position: absolute;
     left: 0%;
+    top: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.main-layout[dir="ltr"] .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0%;
+    top: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.main-layout[dir="rtl"] .dropdown-content {
+    display: none;
+    position: absolute;
+    // left: 0%;
+    top: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    // left: 0%;
     top: 40px;
     background-color: #fff;
     border-radius: 5px;

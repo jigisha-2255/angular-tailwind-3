@@ -1,43 +1,16 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { MainLayoutService } from './main-layout.service';
+import { Component, OnInit } from '@angular/core';
+import { MainLayoutService } from '../main-layout.service';
 
 @Component({
-  selector: 'app-main-layout',
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss']
+  selector: 'app-sidemenu',
+  templateUrl: './sidemenu.component.html',
+  styleUrls: ['./sidemenu.component.scss']
 })
-export class MainLayoutComponent {
-  direction = 'ltr';
-  constructor(public router:Router,public layoutService:MainLayoutService){
-    // console.log(this.layoutService.darkMode);
-  }
-  ngOnInit(){
-    console.log('oninit dark mode',localStorage.getItem('mode'));
-    this.layoutService.darkMode=JSON.parse(localStorage.getItem('mode') || '{}');
-    console.log('oninit layout',localStorage.getItem('direction'));
-    this.layoutService.direction=localStorage.getItem('direction');
-    
-  }
-  title = 'ngx-tw';
-  isOpen: any;
-  subOpen: any;
-  openSidebar: boolean = true;
-  avatarDropdown=false;
-  // sidebg = '#131313';
-  // sidecolor = '#fff';
-  // headerbg = 'rgb(243 244 246 / 1)';
-  // headercolor = '#fff';
-  show1=false;
-  show2=false;
-  onActivate() {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
+export class SidemenuComponent implements OnInit {
+  constructor(public layoutService:MainLayoutService) { }
 
+  ngOnInit(): void {
+  }
   
   menuSidebar = [
     {
@@ -409,6 +382,4 @@ export class MainLayoutComponent {
     // console.log(itemEl2);
     itemEl2.classList.toggle("showMenu2");
   }
- 
 }
-

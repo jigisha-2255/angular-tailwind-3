@@ -1,598 +1,139 @@
-<!-- Sidebar -->
-<div class="sidebar dark-mode sidebarborder" [class.sidebar-close]="!openSidebar">
-  <div class="logo-details flex justify-center sidebar-logoborder">
-    <img src="https://angular.tw/assets/images/logos/angular/logo-nav@2x.png" *ngIf="openSidebar" style="height:40px;">
-    <img src="assets/icon.png" *ngIf="!openSidebar" style="height:40px;">
-  </div>
-
-  <ul class="nav-links" style="height:80%;" id="nav-links">
-    <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
-      <h1 class="uppercase text-gray-400 text-xs ml-5 font-semibold tracking-widest mt-10 mb-5"
-        *ngIf="item.heading && openSidebar">
-        {{item.heading}}</h1>
-      <h1 class="uppercase text-gray-400 text-xs ml-5 font-semibold tracking-widest mt-10 mb-5"
-        *ngIf="item.heading && !openSidebar"></h1>
-      <ul>
-        <li class="dropdown-title flex-col w-full" *ngFor="let subPart of item.subpart" #itemEl3>
-          <a *ngIf="subPart.link!='null'" [routerLink]="[subPart.link]" routerLinkActive="active"
-            class="text-gray-400 text-sm font-semibold">
-            <i [class]="subPart.icon" class="link_icon"></i>
-            <span class="link_name">{{subPart.link_name}}</span>
-          </a>
-          <a *ngIf="subPart.link=='null'" class="text-gray-400 text-sm font-semibold flex flex-row"
-            (click)="showSubmenu(itemEl3)">
-            <i [class]="subPart.icon" class="link_icon"></i>
-            <span class="link_name">{{subPart.link_name}}</span>
-            <i class="fa fa-angle-down text-gray-400 text-sm font-semibold mr-1 absolute right-0"
-              style="font-size:12px;" *ngIf="openSidebar"></i>
-          </a>
-          <ul class="sub-menu">
-            <li #itemEl2 *ngFor="let item_sub of subPart.sub_menu">
-              <div *ngIf="item_sub.submenu2.length == 0">
-                <a class="text-gray-400 text-sm font-semibold" routerLink="{{item_sub.link}}"
-                  routerLinkActive="active">{{item_sub.link_name}}</a>
-              </div>
-              <div class="flex flex-row" *ngIf="item_sub.submenu2.length > 0">
-                <a class="text-gray-400 text-sm font-semibold"
-                  (click)="showSubmenu2(itemEl2)">{{item_sub.link_name}}</a>
-                <i class="fa fa-angle-down text-gray-400 text-sm font-semibold" style="font-size:12px;"></i>
-              </div>
-              <ul class="sub-menu sub-menu2">
-                <li *ngFor="let itemsub of item_sub.submenu2">
-                  <a class="text-gray-400 text-sm font-semibold" [routerLink]="[itemsub.link]"
-                    routerLinkActive="active">{{itemsub.link_name}}</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-    </li>
-  </ul>
-
-  <div style="height:10%;" class="flex flex-row items-center justify-center py-5">
-    <button class="btn-docs w-full mx-5" *ngIf="openSidebar">Docs & Components</button>
-    <div *ngIf="!openSidebar" style="height:40px; width:50px; background-color: #009ef7;" class="mx-3 rounded-lg"></div>
-  </div>
-</div>
-<section class="home-section">
-  <div class="grow flex flex-col" [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
-    <!-- Header -->
-    <div class="flex flex-row items-center justify-between py-3 px-4"
-      [ngClass]="layoutService.darkMode ? '': 'border-b border-gray-300'">
-      <div class="w-1/2 flex flex-row">
-        <div class="hamburger-menu">
-          <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="openSidebar" />
-          <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
-            <i class="fa fa-angle-right text-gray-700" *ngIf="openSidebar"></i>
-            <i class="fa fa-bars text-gray-700" *ngIf="!openSidebar"></i>
-          </label>
-        </div>
-        <div class="flex flex-row">
-          <div class="dropdown">
-            <button class="dropbtn mx-1">Dashboards</button>
-            <div class="dropdown-content" style="min-width:800px;"
-              [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-              <div class="dropdown flex flex-row w-full">
-                <div class="flex flex-row">
-                  <div class="flex flex-col w-3/4 p-5">
-                    <div class="flex flex-row w-full border-b">
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Layouts</h1>
-                        <ul class="text-gray-500 ml-5">
-                          <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
-                          <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
-                          <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
-                          <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
-                        </ul>
-                      </div>
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Toolbars</h1>
-                        <ul class="text-gray-500 ml-5">
-                          <li class="my-3">Classic</li>
-                          <li class="my-3">Saas</li>
-                          <li class="my-3">Accounting</li>
-                          <li class="my-3">Extended</li>
-                          <li class="my-3">Reports</li>
-                        </ul>
-                      </div>
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Asides</h1>
-                        <ul class="text-gray-500 ml-5">
-                          <li class="my-3">Filters</li>
-                          <li class="my-3">Segments</li>
-                          <li class="my-3">Shipment History</li>
-                          <li class="my-3">Courier Activity</li>
-                          <li class="my-3">Calendar</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="flex flex-row py-5" style="width:100%;">
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Landing Page Templates</h1>
-                        <small class="text-gray-500 font-semibold">Qnpe Page landing template with pricing &
-                          others</small>
-                      </div>
-                      <div class="w-1/2 flex items-center justify-end">
-                        <button class="btn font-semibold">
-                          Explore
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w-1/4 p-5"  [ngClass]="layoutService.darkMode ? 'bg-gray-700': 'bg-gray-300'">
-                    <h1 class="text-md font-semibold">More Dashboards</h1>
-                    <ul class="text-gray-500 ml-5">
-                      <li class="my-3">Logistics</li>
-                      <li class="my-3">Website Analytics</li>
-                      <li class="my-3">Finance Performance</li>
-                    </ul>
-                  </div>
+<div class="main-layout" [dir]="layoutService.direction">
+  <!-- Sidebar -->
+  <div class="sidebar dark-mode sidebarborder" [class.sidebar-close]="!openSidebar">
+    <div class="logo-details flex justify-center sidebar-logoborder">
+      <img src="https://angular.tw/assets/images/logos/angular/logo-nav@2x.png" *ngIf="openSidebar" style="height:40px;">
+      <img src="assets/icon.png" *ngIf="!openSidebar" style="height:40px;">
+    </div>
+  
+    <ul class="nav-links" style="height:80%;" id="nav-links">
+      <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
+        <h1 class="uppercase text-gray-400 text-xs mx-5 font-semibold tracking-widest mt-10 mb-5"
+          *ngIf="item.heading && openSidebar">
+          {{item.heading}}</h1>
+        <h1 class="uppercase text-gray-400 text-xs mx-5 font-semibold tracking-widest mt-10 mb-5"
+          *ngIf="item.heading && !openSidebar"></h1>
+        <ul>
+          <li class="dropdown-title flex-col w-full" *ngFor="let subPart of item.subpart" #itemEl3>
+            <a *ngIf="subPart.link!='null'" [routerLink]="[subPart.link]" routerLinkActive="active"
+              class="text-gray-400 text-sm font-semibold">
+              <i [class]="subPart.icon" class="link_icon"></i>
+              <span class="link_name">{{subPart.link_name}}</span>
+            </a>
+            <a *ngIf="subPart.link=='null'" class="text-gray-400 text-sm font-semibold flex flex-row"
+              (click)="showSubmenu(itemEl3)">
+              <i [class]="subPart.icon" class="link_icon"></i>
+              <span class="link_name">{{subPart.link_name}}</span>
+              <i class="fa fa-angle-down text-gray-400 text-sm font-semibold mr-1 absolute" [ngClass]="layoutService.direction=='ltr'?'right-0':'left-0'"
+                style="font-size:12px;" *ngIf="openSidebar"></i>
+            </a>
+            <ul class="sub-menu">
+              <li #itemEl2 *ngFor="let item_sub of subPart.sub_menu">
+                <div *ngIf="item_sub.submenu2.length == 0">
+                  <a class="text-gray-400 text-sm font-semibold" routerLink="{{item_sub.link}}"
+                    routerLinkActive="active">{{item_sub.link_name}}</a>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn mx-1">Pages</button>
-            <div class="dropdown-content" style="min-width:900px;"
-              [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-              <div class="dropdown flex flex-row w-full">
-                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-3 flex-row tabslist">
-                  <li class="mr-2 last:mr-0 text-center p-3 lg:p-0">
-                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
-                      (click)="toggleTabs(1,'General')" [ngClass]="{'active-tabs': openTab === 1}">
-                      General
-                    </a>
-                  </li>
-                  <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
-                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
-                      (click)="toggleTabs(2,'Account')" [ngClass]="{'active-tab':openTab === 2}">
-                      Account
-                    </a>
-                  </li>
-                  <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
-                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
-                      (click)="toggleTabs(3,'Authentication')" [ngClass]="{'active-tab': openTab === 3}">
-                      Authentication
-                    </a>
-                  </li>
-                  <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
-                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
-                      (click)="toggleTabs(4,'Utilities')" [ngClass]="{'active-tab': openTab === 4}">
-                      Utilities
-                    </a>
-                  </li>
-                  <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
-                    <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
-                      (click)="toggleTabs(5,'Widgets')" [ngClass]="{'active-tab': openTab === 5}">
-                      Widgets
-                    </a>
+                <div class="flex flex-row" *ngIf="item_sub.submenu2.length > 0">
+                  <a class="text-gray-400 text-sm font-semibold"
+                    (click)="showSubmenu2(itemEl2)">{{item_sub.link_name}}</a>
+                  <i class="fa fa-angle-down text-gray-400 text-sm font-semibold" style="font-size:12px;"></i>
+                </div>
+                <ul class="sub-menu sub-menu2">
+                  <li *ngFor="let itemsub of item_sub.submenu2">
+                    <a class="text-gray-400 text-sm font-semibold" [routerLink]="[itemsub.link]"
+                      routerLinkActive="active">{{itemsub.link_name}}</a>
                   </li>
                 </ul>
-                <div *ngIf="openTab==1">
-                  <div class="px-10 py-5 flex flex-row">
-                    <div class="flex flex-col w-1/2">
-                      <div class="flex flex-row w-full py-5">
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Layouts</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
-                            <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
-                            <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
-                            <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Toolbars</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Classic</li>
-                            <li class="my-3">Saas</li>
-                            <li class="my-3">Accounting</li>
-                            <li class="my-3">Extended</li>
-                            <li class="my-3">Reports</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Asides</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Filters</li>
-                            <li class="my-3">Segments</li>
-                            <li class="my-3">Shipment History</li>
-                            <li class="my-3">Courier Activity</li>
-                            <li class="my-3">Calendar</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-1/2">
-                      <img src="../assets/megamenu.jpg" class="rounded-xl">
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="openTab==2">
-                  <div class="px-10 py-5 flex flex-row">
-                    <div class="flex flex-col w-1/2">
-                      <div class="flex flex-row w-full py-5">
-                        <div class="w-1/2">
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Overview</li>
-                            <li class="my-3">Setting</li>
-                            <li class="my-3">Security</li>
-                            <li class="my-3">Activity</li>
-                            <li class="my-3">Billing</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Statements</li>
-                            <li class="my-3">Referrals</li>
-                            <li class="my-3">API Keys</li>
-                            <li class="my-3">Logs</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-1/2">
-                      <img src="../assets/megamenu.jpg" class="rounded-xl">
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="openTab==3">
-                  <div class="px-10 py-5 flex flex-row">
-                    <div class="flex flex-col w-full">
-                      <div class="flex flex-row w-full py-5">
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Layouts</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
-                            <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
-                            <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
-                            <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Toolbars</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Classic</li>
-                            <li class="my-3">Saas</li>
-                            <li class="my-3">Accounting</li>
-                            <li class="my-3">Extended</li>
-                            <li class="my-3">Reports</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Asides</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Filters</li>
-                            <li class="my-3">Segments</li>
-                            <li class="my-3">Shipment History</li>
-                            <li class="my-3">Courier Activity</li>
-                            <li class="my-3">Calendar</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Asides</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Filters</li>
-                            <li class="my-3">Segments</li>
-                            <li class="my-3">Shipment History</li>
-                            <li class="my-3">Courier Activity</li>
-                            <li class="my-3">Calendar</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="openTab==4">
-                  <div class="px-10 py-5 flex flex-row">
-                    <div class="flex flex-col w-1/2">
-                      <div class="flex flex-row w-full py-5">
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">General Modals</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Invite Friends</li>
-                            <li class="my-3">View Users</li>
-                            <li class="my-3">Select Users</li>
-                            <li class="my-3">Upgrade Plan</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Advanced Modals</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Create App</li>
-                            <li class="my-3">Create Campaign</li>
-                          </ul>
-                          <h1 class="text-md font-semibold">Search</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Horizontal</li>
-                            <li class="my-3">Vertical</li>
-                          </ul>
-                        </div>
-                        <div class="w-1/2">
-                          <h1 class="text-md font-semibold">Wizards</h1>
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Filters</li>
-                            <li class="my-3">Segments</li>
-                            <li class="my-3">Shipment History</li>
-                            <li class="my-3">Courier Activity</li>
-                            <li class="my-3">Calendar</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-1/2">
-                      <img src="../assets/megamenu.jpg" class="rounded-xl">
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="openTab==5">
-                  <div class="px-10 py-5 flex flex-row">
-                    <div class="flex flex-col w-1/2">
-                      <div class="flex flex-row w-full py-5">
-                        <div class="w-1/2">
-                          <ul class="text-gray-500 ml-5">
-                            <li class="my-3">Lists</li>
-                            <li class="my-3">Statistics</li>
-                            <li class="my-3">Charts</li>
-                            <li class="my-3">Mixed</li>
-                            <li class="my-3">Tables</li>
-                            <li class="my-3">Feeds</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-1/2">
-                      <img src="../assets/megamenu.jpg" class="rounded-xl">
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn mx-1">Apps</button>
-            <div class="dropdown-content" [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-              <div class="dropdown w-full">
-                <button class="dropbtn1 text-xs">Projects</button>
-                <div class="dropdown-content1">
-                  <ul class="text-gray-500 ml-10">
-                    <li>
-                      <a href="#" style="padding:5px!important;">My Projects</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">View Project</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Targets</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Budget</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Users</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Files</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Activity</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Setting</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="dropdown w-full">
-                <button class="dropbtn1 text-xs">eCommerce</button>
-                <div class="dropdown-content1">
-                  <ul class="text-gray-500 ml-10">
-                    <li>
-                      <a href="#" style="padding:5px!important;">Catalog</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Sales</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Customers</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Reports</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Settings</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="dropdown w-full">
-                <button class="dropbtn1 text-xs">Support Center</button>
-                <div class="dropdown-content1">
-                  <ul class="text-gray-500 ml-10">
-                    <li>
-                      <a href="#" style="padding:5px!important;">Overview</a>
-                    </li>
-                    <li>
-                      <div class="dropdown w-full">
-                        <button class="dropbtn1 text-xs">Tickets</button>
-                        <div class="dropdown-content1">
-                          <ul class="text-gray-500 ml-10">
-                            <li>
-                              <a href="#" style="padding:5px!important;">Ticket List</a>
-                            </li>
-                            <li>
-                              <a href="#" style="padding:5px!important;">Ticket View</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Tutorials</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">FAQ</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Licences</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Contact Us</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="dropdown w-full">
-                <button class="dropbtn1 text-xs">User Management</button>
-                <div class="dropdown-content1">
-                  <ul class="text-gray-500 ml-10">
-                    <li>
-                      <a href="#" style="padding:5px!important;">Catalog</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Sales</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Customers</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Reports</a>
-                    </li>
-                    <li>
-                      <a href="#" style="padding:5px!important;">Settings</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn mx-1">Layouts</button>
-            <div class="dropdown-content" style="min-width:900px;"
-              [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-              <div class="dropdown flex flex-row w-full">
-                <div class="px-10 py-5 flex flex-row">
-                  <div class="flex flex-col w-1/2">
-                    <div class="flex flex-row w-full py-5">
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Layouts</h1>
-                        <ul class="text-gray-500 ml-5">
-                          <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
-                          <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
-                          <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
-                          <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
-                        </ul>
-                      </div>
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Toolbars</h1>
-                        <ul class="text-gray-500 ml-5">
-                          <li class="my-3">Classic</li>
-                          <li class="my-3">Saas</li>
-                          <li class="my-3">Accounting</li>
-                          <li class="my-3">Extended</li>
-                          <li class="my-3">Reports</li>
-                        </ul>
-                      </div>
-                      <div class="w-1/2">
-                        <h1 class="text-md font-semibold">Asides</h1>
-                        <ul class="text-gray-500 ml-5">
-                          <li class="my-3">Filters</li>
-                          <li class="my-3">Segments</li>
-                          <li class="my-3">Shipment History</li>
-                          <li class="my-3">Courier Activity</li>
-                          <li class="my-3">Calendar</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w-1/2">
-                    <img src="../assets/megamenu.jpg" class="rounded-xl">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn mx-1">Help</button>
-            <div class="dropdown-content" [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-              <div class="dropdown">
-                <button class="dropbtn1 text-xs">Components</button>
-                <div class="dropdown-content1">
-                  <a href="#">Check out over 200 in-house components, plugins and ready for solutions</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="dropbtn1 text-xs">Documentation</button>
-                <div class="dropdown-content1">
-                  <a href="#">Check out the complete documentation</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="dropbtn1 text-xs">Changelog v8.2.0</button>
-                <div class="dropdown-content1">
-                  <!-- <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="avatarDropdown==true"
-        style="position:absolute; top:65px; right:20px; border-radius:5px; z-index:1111;"
-        class="bg-white rounded-xl py-2 px-5">
-        <div class="flex flex-row items-center border-b pb-5">
-          <div>
-            <img src="../../assets/profile.jpg" class="profile-img mr-2">
-          </div>
-          <div class="text-gray-400 font-semibold text-sm">
-            {{userEmail}}
-          </div>
-        </div>
-        <div class="my-2">
-          <a class="text-gray-400 font-semibold text-sm">Sign Out</a>
-        </div>
-      </div>
-      <div class="w-1/2 text-sm flex flex-row justify-end items-center">
-        <span class="mr-3 text-sm font-medium" [ngClass]="layoutService.darkMode ? 'text-white': 'text-gray-900'">LTR</span>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer">
-          <div
-            class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-          </div>
-          <span class="ml-3 mr-3 text-sm font-medium" [ngClass]="layoutService.darkMode ? 'text-white': 'text-gray-900'">RTL</span>
-        </label>
-        <span class="mr-3 text-sm font-medium" [ngClass]="layoutService.darkMode ? 'text-white': 'text-gray-900'">Light</span>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" (change)="layoutService.darkMode=!layoutService.darkMode">
-          <div 
-            class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-          </div>
-          <span class="ml-3 text-sm font-medium" [ngClass]="layoutService.darkMode ? 'text-white': 'text-gray-900'">Dark</span>
-        </label>
-        <i class="fa fa-search mx-3 text-gray-300"></i>
-        <i class="fa fa-message mx-3 text-gray-300"></i>
-        <i class="fa fa-comments mx-3 text-gray-300"></i>
-        <i class="fa fa-search mx-3 text-gray-300"></i>
-        <i class="fa fa-message mx-3 text-gray-300"></i>
-        <i class="fa fa-comments mx-3 text-gray-300"></i>
-        <img src="assets/avatar.jpg" class="avatar mx-3" (click)="avatarDropdown=!avatarDropdown;">
-      </div>
-    </div>
-
-    <!-- routing section -->
-    <div class="grow flex flex-row" [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
-      <div class="h-full w-full">
-        <router-outlet fxFlex></router-outlet>
-      </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+  
+      </li>
+    </ul>
+  
+    <div style="height:10%;" class="flex flex-row items-center justify-center py-5">
+      <button class="btn-docs w-full mx-5" *ngIf="openSidebar">Docs & Components</button>
+      <div *ngIf="!openSidebar" style="height:40px; width:50px; background-color: #009ef7;" class="mx-3 rounded-lg"></div>
     </div>
   </div>
-</section>
-
-<!-- Scroll top -->
-<div class="scroll-top" (click)="onActivate()"></div>
+  <section class="home-section">
+    <div class="grow flex flex-col" [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
+      <!-- Header -->
+      <div class="flex flex-row items-center justify-between py-3 px-4"
+        [ngClass]="layoutService.darkMode ? '': 'border-b border-gray-300'">
+        <div class="w-1/2 flex flex-row">
+          <div class="hamburger-menu">
+            <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="openSidebar" />
+            <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
+              <i class="fa fa-angle-right text-gray-700" *ngIf="openSidebar"></i>
+              <i class="fa fa-bars text-gray-700" *ngIf="!openSidebar"></i>
+            </label>
+          </div>
+          <div class="flex flex-row">
+            <div class="dropdown">
+              <button class="dropbtn mx-1">Dashboards</button>
+              <div class="dropdown-content" style="min-width:800px;"
+                [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
+               <app-dashboards-header-dropdown></app-dashboards-header-dropdown>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn mx-1">Pages</button>
+              <div class="dropdown-content" style="min-width:900px;"
+                [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
+                <app-pages-header-dropdown></app-pages-header-dropdown>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn mx-1">Apps</button>
+              <div class="dropdown-content" [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
+                <app-apps-header-dropdown></app-apps-header-dropdown>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn mx-1">Layouts</button>
+              <div class="dropdown-content" style="min-width:900px;"
+                [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
+                <app-layouts-header-dropdown></app-layouts-header-dropdown>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn mx-1">Help</button>
+              <div class="dropdown-content" [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
+                <app-help-header-dropdown></app-help-header-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="avatarDropdown==true"
+          style="position:absolute; top:65px; border-radius:5px; z-index:1111;"
+          class="bg-white rounded-xl py-2 px-5"  [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white', layoutService.direction == 'ltr' ? 'right-5': 'left-5']">
+            <app-profile-header-dropdown></app-profile-header-dropdown>
+        </div>
+        <div class="w-1/2 text-sm flex flex-row justify-end items-center">
+          <app-layout-change></app-layout-change>
+          <app-mode-change></app-mode-change>
+          <i class="fa fa-search mx-3 text-gray-300"></i>
+          <i class="fa fa-message mx-3 text-gray-300"></i>
+          <i class="fa fa-comments mx-3 text-gray-300"></i>
+          <i class="fa fa-search mx-3 text-gray-300"></i>
+          <i class="fa fa-message mx-3 text-gray-300"></i>
+          <i class="fa fa-comments mx-3 text-gray-300"></i>
+          <img src="assets/avatar.jpg" class="avatar mx-3" (click)="avatarDropdown=!avatarDropdown;">
+        </div>
+      </div>
+  
+      <!-- routing section -->
+      <div class="grow flex flex-row" [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
+        <div class="h-full w-full">
+          <router-outlet fxFlex></router-outlet>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Scroll top -->
+  <div class="scroll-top" (click)="onActivate()"></div>
+</div>

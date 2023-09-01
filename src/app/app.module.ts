@@ -15,7 +15,7 @@ import { FollowersComponent } from './profile/followers/followers.component';
     DocumentsComponent,
     ConnectionsComponent,
     ActivityComponent,
-    FollowersComponent
+    FollowersComponent,
   ],
   imports: [
     BrowserModule,

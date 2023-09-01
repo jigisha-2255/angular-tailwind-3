@@ -1,0 +1,213 @@
+<div class="dropdown flex flex-row w-full">
+    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-3 flex-row tabslist">
+      <li class="mr-2 last:mr-0 text-center p-3 lg:p-0">
+        <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+          (click)="toggleTabs(1,'General')" [ngClass]="{'active-tabs': openTab === 1}">
+          General
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+        <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+          (click)="toggleTabs(2,'Account')" [ngClass]="{'active-tabs':openTab === 2}">
+          Account
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+        <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+          (click)="toggleTabs(3,'Authentication')" [ngClass]="{'active-tabs': openTab === 3}">
+          Authentication
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+        <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+          (click)="toggleTabs(4,'Utilities')" [ngClass]="{'active-tabs': openTab === 4}">
+          Utilities
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 text-center p-3 lg:p-0">
+        <a class="text-sm font-bold px-5 py-3 leading-normal text-gray-500"
+          (click)="toggleTabs(5,'Widgets')" [ngClass]="{'active-tabs': openTab === 5}">
+          Widgets
+        </a>
+      </li>
+    </ul>
+    <div *ngIf="openTab==1">
+      <div class="px-10 py-5 flex flex-row">
+        <div class="flex flex-col w-1/2">
+          <div class="flex flex-row w-full py-5">
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Layouts</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
+                <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
+                <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
+                <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Toolbars</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Classic</li>
+                <li class="my-3">Saas</li>
+                <li class="my-3">Accounting</li>
+                <li class="my-3">Extended</li>
+                <li class="my-3">Reports</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Asides</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Filters</li>
+                <li class="my-3">Segments</li>
+                <li class="my-3">Shipment History</li>
+                <li class="my-3">Courier Activity</li>
+                <li class="my-3">Calendar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/2">
+          <img src="../assets/megamenu.jpg" class="rounded-xl">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="openTab==2">
+      <div class="px-10 py-5 flex flex-row">
+        <div class="flex flex-col w-1/2">
+          <div class="flex flex-row w-full py-5">
+            <div class="w-1/2">
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Overview</li>
+                <li class="my-3">Setting</li>
+                <li class="my-3">Security</li>
+                <li class="my-3">Activity</li>
+                <li class="my-3">Billing</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Statements</li>
+                <li class="my-3">Referrals</li>
+                <li class="my-3">API Keys</li>
+                <li class="my-3">Logs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/2">
+          <img src="../assets/megamenu.jpg" class="rounded-xl">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="openTab==3">
+      <div class="px-10 py-5 flex flex-row">
+        <div class="flex flex-col w-full">
+          <div class="flex flex-row w-full py-5">
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Layouts</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
+                <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
+                <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
+                <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Toolbars</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Classic</li>
+                <li class="my-3">Saas</li>
+                <li class="my-3">Accounting</li>
+                <li class="my-3">Extended</li>
+                <li class="my-3">Reports</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Asides</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Filters</li>
+                <li class="my-3">Segments</li>
+                <li class="my-3">Shipment History</li>
+                <li class="my-3">Courier Activity</li>
+                <li class="my-3">Calendar</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Asides</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Filters</li>
+                <li class="my-3">Segments</li>
+                <li class="my-3">Shipment History</li>
+                <li class="my-3">Courier Activity</li>
+                <li class="my-3">Calendar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="openTab==4">
+      <div class="px-10 py-5 flex flex-row">
+        <div class="flex flex-col w-1/2">
+          <div class="flex flex-row w-full py-5">
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">General Modals</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Invite Friends</li>
+                <li class="my-3">View Users</li>
+                <li class="my-3">Select Users</li>
+                <li class="my-3">Upgrade Plan</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Advanced Modals</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Create App</li>
+                <li class="my-3">Create Campaign</li>
+              </ul>
+              <h1 class="text-md font-semibold">Search</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Horizontal</li>
+                <li class="my-3">Vertical</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <h1 class="text-md font-semibold">Wizards</h1>
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Filters</li>
+                <li class="my-3">Segments</li>
+                <li class="my-3">Shipment History</li>
+                <li class="my-3">Courier Activity</li>
+                <li class="my-3">Calendar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/2">
+          <img src="../assets/megamenu.jpg" class="rounded-xl">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="openTab==5">
+      <div class="px-10 py-5 flex flex-row">
+        <div class="flex flex-col w-1/2">
+          <div class="flex flex-row w-full py-5">
+            <div class="w-1/2">
+              <ul class="text-gray-500 ml-5">
+                <li class="my-3">Lists</li>
+                <li class="my-3">Statistics</li>
+                <li class="my-3">Charts</li>
+                <li class="my-3">Mixed</li>
+                <li class="my-3">Tables</li>
+                <li class="my-3">Feeds</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/2">
+          <img src="../assets/megamenu.jpg" class="rounded-xl">
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,58 @@
+<!-- Sidebar -->
+<div class="sidebar dark-mode sidebarborder" [class.sidebar-close]="!layoutService.openSidebar">
+    <div class="logo-details flex justify-center sidebar-logoborder">
+      <img src="https://angular.tw/assets/images/logos/angular/logo-nav@2x.png" *ngIf="layoutService.openSidebar" style="height:40px;">
+      <img src="assets/icon.png" *ngIf="!layoutService.openSidebar" style="height:40px;">
+    </div>
+  
+    <ul class="nav-links" style="height:80%;" id="nav-links">
+      <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
+        <h1 class="uppercase text-gray-400 text-xs ml-5 font-semibold tracking-widest mt-10 mb-5"
+          *ngIf="item.heading && layoutService.openSidebar">
+          {{item.heading}}</h1>
+        <h1 class="uppercase text-gray-400 text-xs ml-5 font-semibold tracking-widest mt-10 mb-5"
+          *ngIf="item.heading && !layoutService.openSidebar"></h1>
+        <ul>
+          <li class="dropdown-title flex-col w-full" *ngFor="let subPart of item.subpart" #itemEl3>
+            <a *ngIf="subPart.link!='null'" [routerLink]="[subPart.link]" routerLinkActive="active"
+              class="text-gray-400 text-sm font-semibold">
+              <i [class]="subPart.icon" class="link_icon"></i>
+              <span class="link_name">{{subPart.link_name}}</span>
+            </a>
+            <a *ngIf="subPart.link=='null'" class="text-gray-400 text-sm font-semibold flex flex-row"
+              (click)="showSubmenu(itemEl3)">
+              <i [class]="subPart.icon" class="link_icon"></i>
+              <span class="link_name">{{subPart.link_name}}</span>
+              <i class="fa fa-angle-down text-gray-400 text-sm font-semibold mr-1 absolute right-0"
+                style="font-size:12px;" *ngIf="layoutService.openSidebar"></i>
+            </a>
+            <ul class="sub-menu">
+              <li #itemEl2 *ngFor="let item_sub of subPart.sub_menu">
+                <div *ngIf="item_sub.submenu2.length == 0">
+                  <a class="text-gray-400 text-sm font-semibold" routerLink="{{item_sub.link}}"
+                    routerLinkActive="active">{{item_sub.link_name}}</a>
+                </div>
+                <div class="flex flex-row" *ngIf="item_sub.submenu2.length > 0">
+                  <a class="text-gray-400 text-sm font-semibold"
+                    (click)="showSubmenu2(itemEl2)">{{item_sub.link_name}}</a>
+                  <i class="fa fa-angle-down text-gray-400 text-sm font-semibold" style="font-size:12px;"></i>
+                </div>
+                <ul class="sub-menu sub-menu2">
+                  <li *ngFor="let itemsub of item_sub.submenu2">
+                    <a class="text-gray-400 text-sm font-semibold" [routerLink]="[itemsub.link]"
+                      routerLinkActive="active">{{itemsub.link_name}}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+  
+      </li>
+    </ul>
+  
+    <div style="height:10%;" class="flex flex-row items-center justify-center py-5">
+      <button class="btn-docs w-full mx-5" *ngIf="layoutService.openSidebar">Docs & Components</button>
+      <div *ngIf="!layoutService.openSidebar" style="height:40px; width:50px; background-color: #009ef7;" class="mx-3 rounded-lg"></div>
+    </div>
+  </div>

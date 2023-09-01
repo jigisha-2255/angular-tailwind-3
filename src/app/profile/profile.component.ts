@@ -9,7 +9,7 @@ import { MainLayoutService } from '../main-layout/main-layout.service';
 })
 export class ProfileComponent implements OnInit {
   ngOnInit(): void {
-    console.log('dark mode',this.layoutService.darkMode);
+    // console.log('dark mode',this.layoutService.darkMode);
   }
   constructor(public layoutService:MainLayoutService,public router:Router){}
   openTab!:number;
