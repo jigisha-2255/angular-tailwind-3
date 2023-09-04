@@ -7,6 +7,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { ConnectionsComponent } from './connections/connections.component';
 import { ActivityComponent } from './profile/activity/activity.component';
 import { FollowersComponent } from './profile/followers/followers.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FollowersComponent } from './profile/followers/followers.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CanvasJSAngularChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

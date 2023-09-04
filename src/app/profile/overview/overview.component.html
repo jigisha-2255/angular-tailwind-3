@@ -1,1 +1,377 @@
-<p>overview works!</p>
+<div class="flex flex-col lg:flex-row justify-between shadow-lg rounded">
+    <div class="w-49">
+        <div class="rounded-lg flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
+            <div class="flex flex-row justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-1.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Nick Logan</h1>
+                        <div class="text-sm text-gray-400 font-bold">PHP, SQLite, Artisan CLI</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <i class="fa fa-dashboard text-gray-500"></i>
+                </div>
+            </div>
+            <div class="my-3 text-sm">
+                Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors about driving and
+                keep you focused on the overall structure of your post
+            </div>
+            <div class="flex flex-row border-b pb-7">
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2 mx-3">
+                    <i class="fa fa-dashboard mx-2"></i>
+                    120
+                </div>
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2">
+                    <i class="fa fa-heart mx-2"></i>
+                    15
+                </div>
+            </div>
+            <div class="flex flex-row justify-between pt-5">
+                <input type="text" placeholder="Reply..">
+                <div class="flex flex-row">
+                    <i class="fa fa-paperclip mx-5 text-gray-500"></i>
+                    <i class="fa fa-location-dot text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
+            <div class="flex flex-row justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-2.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Carles Nilson</h1>
+                        <div class="text-sm text-gray-400 font-bold">Yestarday at 5:06 PM</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <i class="fa fa-dashboard text-gray-500"></i>
+                </div>
+            </div>
+            <div class="my-3 text-sm">
+                Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors about driving and
+                keep you focused on the overall structure of your post
+            </div>
+            <div class="flex flex-row pb-7">
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2 mx-3">
+                    <i class="fa fa-dashboard mx-2"></i>
+                    12
+                </div>
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2">
+                    <i class="fa fa-heart mx-2"></i>
+                    150
+                </div>
+            </div>
+            <div class="flex flex-row pb-7 ml-10 justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-2-1.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Alice Danchik <span class="text-gray-400 font-semibold">1
+                                day</span></h1>
+                        <div class="text-sm text-gray-400">Long before you sit dow to put digital pen to
+                            paper you need to make sure you have to sit down and write.
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-row text-gray-400 text-sm font-semibold">
+                    Reply
+                </div>
+            </div>
+            <div class="flex flex-row border-b pb-7 ml-10 justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-2-2.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Harris Bold<span class="text-gray-400 font-semibold">2 days</span>
+                        </h1>
+                        <div class="text-sm text-gray-400">Outlines keep you honest. They stop you from
+                            indulging in poorly
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-row text-gray-400 text-sm font-semibold">
+                    Reply
+                </div>
+            </div>
+            <div class="flex flex-row justify-between pt-5">
+                <input type="text" placeholder="Reply..">
+                <div class="flex flex-row">
+                    <i class="fa fa-paperclip mx-5 text-gray-500"></i>
+                    <i class="fa fa-location-dot text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
+            <div class="flex flex-row justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-3.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Carles Nilson</h1>
+                        <div class="text-sm text-gray-400 font-bold">Last week at 10:00 PM</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <i class="fa fa-dashboard text-gray-500"></i>
+                </div>
+            </div>
+            <div class="my-3 text-sm">
+                Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors about driving and
+                keep you focused on the overall structure of your post
+            </div>
+            <div class="flex flex-row border-b pb-7">
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2 mx-3">
+                    <i class="fa fa-dashboard mx-2"></i>
+                    22
+                </div>
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2">
+                    <i class="fa fa-heart mx-2"></i>
+                    59
+                </div>
+            </div>
+            <div class="flex flex-row justify-between pt-5">
+                <input type="text" placeholder="Reply..">
+                <div class="flex flex-row">
+                    <i class="fa fa-paperclip mx-5 text-gray-500"></i>
+                    <i class="fa fa-location-dot text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
+            <div class="flex flex-row justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-4.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Sam Logan</h1>
+                        <div class="text-sm text-gray-400 font-bold">Mango, Java, Python</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <i class="fa fa-dashboard text-gray-500"></i>
+                </div>
+            </div>
+            <div class="rounded-lg mt-5">
+                <img src="assets/stock.jpg" style="height:300px; width:100%; border-radius:5px;">
+            </div>
+            <div class="my-3 text-sm">
+                Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors about driving and
+                keep you focused on the overall structure of your post
+            </div>
+            <div class="flex flex-row border-b pb-7">
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2 mx-3">
+                    <i class="fa fa-dashboard mx-2"></i>
+                    89
+                </div>
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2">
+                    <i class="fa fa-heart mx-2"></i>
+                    29
+                </div>
+            </div>
+            <div class="flex flex-row justify-between pt-5">
+                <input type="text" placeholder="Reply..">
+                <div class="flex flex-row">
+                    <i class="fa fa-paperclip mx-5 text-gray-500"></i>
+                    <i class="fa fa-location-dot text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">  
+            <div class="flex flex-row justify-between">
+                <div class="flex flex-row items-center">
+                    <img src="assets/overview-5.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Mat Dillon</h1>
+                        <div class="text-sm text-gray-400 font-bold">Last month</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <i class="fa fa-dashboard text-gray-500"></i>
+                </div>
+            </div>
+            <div class="my-3 text-sm">
+                Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors
+            </div>
+            <div class="flex flex-row">
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/qIHXpnASPAA"
+                    title="[Below v7.0] How To Change Global Fonts - Metronic Admin Theme" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="flex flex-row border-b pb-7 mt-5">
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2 mx-3">
+                    <i class="fa fa-dashboard mx-2"></i>
+                    22
+                </div>
+                <div class="bg-follow px-2 rounded-md flex items-center justify-center w-20 p-2">
+                    <i class="fa fa-heart mx-2"></i>
+                    59
+                </div>
+            </div>
+            <div class="flex flex-row justify-between pt-5">
+                <input type="text" placeholder="Reply..">
+                <div class="flex flex-row">
+                    <i class="fa fa-paperclip mx-5 text-gray-500"></i>
+                    <i class="fa fa-location-dot text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-49">
+        <div class="rounded-lg flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
+            <div class="flex flex-col justify-between">
+                <div class="flex flex-row justify-between mb-5">
+                    <div>
+                        <h1 class="font-bold">Recent Statistics</h1>
+                        <div class="text-sm text-gray-400 font-semibold">More than 400 new members</div>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <i class="fa fa-dashboard text-gray-500"></i>
+                    </div>
+                </div>
+                <div class="chart-container w-full h-full flex flex-row items-center justify-center mx-auto">
+                    <canvas id="MyChart" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">{{ chart }}</canvas>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']"> 
+            <div class="flex flex-col justify-between">
+                <div class="flex flex-row justify-between mb-5">
+                    <div>
+                        <h1 class="font-bold">Activities</h1>
+                        <div class="text-sm text-gray-400 font-semibold">890,344 Sales</div>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <i class="fa fa-dashboard text-gray-500"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <ol class="relative text-gray-500 border-l border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">Outlines keep you honest. And keep structure</h3>
+                        </li>
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">AEOL meeting</h3>
+                        </li>
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">Make deposit USD 700. to ESL</h3>
+                        </li>
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">Indulging in poorly driving and keep structure keep
+                                great</h3>
+                        </li>
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">New order placed #XF-2356.</h3>
+                        </li>
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">Indulging in poorly driving and keep structure keep
+                                great</h3>
+                        </li>
+                        <li class="mb-10 ml-6 flex items-center">
+                            <span
+                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+                                <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                </svg>
+                            </span>
+                            <h3 class="font-medium leading-tight">Finance KPI Mobile app launch preparion meeting</h3>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
+            <div class="flex flex-col justify-between">
+                <div class="flex flex-row justify-between mb-5">
+                    <h1 class="font-bold">Authors</h1>
+                    <div class="flex flex-row items-center">
+                        <i class="fa fa-dashboard text-gray-500"></i>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <img src="assets/author-1.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Emma Smith</h1>
+                        <div class="text-sm text-gray-400 font-semibold">Project Manager</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center mt-5">
+                    <img src="assets/author-2.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Sean Bean</h1>
+                        <div class="text-sm text-gray-400 font-semibold">PHP, SQLite, Artisan CLI</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center mt-5">
+                    <img src="assets//author-3.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Brian Cox</h1>
+                        <div class="text-sm text-gray-400 font-semibold">PHP, SQLite, Artisan CLI</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center mt-5">
+                    <img src="assets/author-4.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Francis Mitcham</h1>
+                        <div class="text-sm text-gray-400 font-semibold">PHP, SQLite, Artisan CLI</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center mt-5">
+                    <img src="assets/author-5.jpg" class="card-img rounded-md mx-2">
+                    <div>
+                        <h1 class="text-sm font-bold">Dan Wilson</h1>
+                        <div class="text-sm text-gray-400 font-semibold">PHP, SQLite, Artisan CLI</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

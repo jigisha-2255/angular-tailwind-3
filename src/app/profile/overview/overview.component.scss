@@ -1,0 +1,24 @@
+::ng-deep canvas {  /* or some other selector */
+    // width: 500px!important;
+    height: 300px!important;
+ }
+
+ .card-img{
+    height:50px;
+    width:50px;
+}
+.bg-follow{
+    background-color: #f0f0f0;
+    color:gray;
+}
+.w-49{
+    width:49%;
+}
+.bg-black{
+    background-color: #1c1c1c;
+}
+@media(max-width:1200px){
+    .w-49{
+        width:100%;
+    }
+}

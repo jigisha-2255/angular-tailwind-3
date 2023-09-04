@@ -10,6 +10,6 @@ export class MainLayoutService {
   constructor() {
     this.darkMode=JSON.parse(localStorage.getItem('mode') || '{}');
     this.direction=localStorage.getItem('direction');
-    console.log(this.direction);
+    this.openSidebar=JSON.parse(localStorage.getItem('sidebar') || '{}');
   }
 }

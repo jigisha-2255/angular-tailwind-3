@@ -23,7 +23,7 @@
             <img src="assets/profile.jpg" class="rounded-md profile-img">
         </div>
         <div class="flex flex-col lg:w-1/2">
-            <div class="flex flex-row items-center my-2 lg:my-0">
+            <div class="flex flex-col lg:flex-row items-center my-2 lg:my-0">
                 <h1 class="text-lg font-semibold mr-2">Max Smith</h1>
                 <i class="fa fa-certificate mr-2 icon-color"></i>
                 <small class="upgradeBtn">Upgrade to Pro</small>
@@ -138,11 +138,11 @@
 <div class="relative flex mx-5 lg:mx-10 my-7 flex-col break-words mb-6">
     <router-outlet></router-outlet>
 </div>
-<div class="flex flex-col lg:flex-row items-center py-4 px-10" [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-    <div class="w-1/2">
+<div class="flex flex-col lg:flex-row items-center justify-center py-4 px-10" [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
+    <div class="w-full lg:w-1/2 flex flex-row justify-center lg:justify-start">
         <span class="text-gray-400">2023 © </span>Keenthemes
     </div>
-    <div class="flex flex-row w-1/2 justify-end">
+    <div class="flex flex-row w-full lg:w-1/2 justify-end">
         <a href="" class="text-gray-400 text-sm font-semibold mx-3">About</a>
         <a href="" class="text-gray-400 text-sm font-semibold mx-3">Support</a>
         <a href="" class="text-gray-400 text-sm font-semibold mx-3">Purchase</a>

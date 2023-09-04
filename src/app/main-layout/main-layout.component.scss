@@ -629,7 +629,10 @@ ul.tabslist li {
         width: 0px;
     }
 
-    .home-section {
+    .main-layout[dir="ltr"] .home-section {
+        width: 100%;
+    }
+    .main-layout[dir="rtl"] .home-section {
         width: 100%;
     }
 

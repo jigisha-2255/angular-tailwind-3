@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "/assets/canvasjs.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -98,7 +100,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "/assets/canvasjs.min.js"
+            ]
           }
         }
       }

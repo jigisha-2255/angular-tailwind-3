@@ -17,17 +17,18 @@ export class MainLayoutComponent {
     this.layoutService.darkMode=JSON.parse(localStorage.getItem('mode') || '{}');
     console.log('oninit layout',localStorage.getItem('direction'));
     this.layoutService.direction=localStorage.getItem('direction');
-    
+    console.log('oninit sidebar',localStorage.getItem('sidebar'));
+    this.layoutService.openSidebar=JSON.parse(localStorage.getItem('sidebar') || '{}');
+  }
+
+  checkSidebar(status:any){
+    this.layoutService.openSidebar=status;
+    localStorage.setItem('sidebar',new Boolean(this.layoutService.openSidebar).toString());
   }
   title = 'ngx-tw';
   isOpen: any;
   subOpen: any;
-  openSidebar: boolean = true;
   avatarDropdown=false;
-  // sidebg = '#131313';
-  // sidecolor = '#fff';
-  // headerbg = 'rgb(243 244 246 / 1)';
-  // headercolor = '#fff';
   show1=false;
   show2=false;
   onActivate() {
@@ -50,7 +51,7 @@ export class MainLayoutComponent {
           "sub_menu": [
             {
               "link_name": "Default",
-              "link": "/main-layout/account/overview",
+              "link": "/main-layout/dashboard",
               "submenu2": []
             },
             {

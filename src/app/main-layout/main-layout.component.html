@@ -1,18 +1,19 @@
 <div class="main-layout" [dir]="layoutService.direction">
   <!-- Sidebar -->
-  <div class="sidebar dark-mode sidebarborder" [class.sidebar-close]="!openSidebar">
+  <div class="sidebar dark-mode sidebarborder" [class.sidebar-close]="!layoutService.openSidebar">
     <div class="logo-details flex justify-center sidebar-logoborder">
-      <img src="https://angular.tw/assets/images/logos/angular/logo-nav@2x.png" *ngIf="openSidebar" style="height:40px;">
-      <img src="assets/icon.png" *ngIf="!openSidebar" style="height:40px;">
+      <img src="https://angular.tw/assets/images/logos/angular/logo-nav@2x.png" *ngIf="layoutService.openSidebar"
+        style="height:40px;">
+      <img src="assets/icon.png" *ngIf="!layoutService.openSidebar" style="height:40px;">
     </div>
-  
+
     <ul class="nav-links" style="height:80%;" id="nav-links">
       <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
         <h1 class="uppercase text-gray-400 text-xs mx-5 font-semibold tracking-widest mt-10 mb-5"
-          *ngIf="item.heading && openSidebar">
+          *ngIf="item.heading && layoutService.openSidebar">
           {{item.heading}}</h1>
         <h1 class="uppercase text-gray-400 text-xs mx-5 font-semibold tracking-widest mt-10 mb-5"
-          *ngIf="item.heading && !openSidebar"></h1>
+          *ngIf="item.heading && !layoutService.openSidebar"></h1>
         <ul>
           <li class="dropdown-title flex-col w-full" *ngFor="let subPart of item.subpart" #itemEl3>
             <a *ngIf="subPart.link!='null'" [routerLink]="[subPart.link]" routerLinkActive="active"
@@ -24,8 +25,9 @@
               (click)="showSubmenu(itemEl3)">
               <i [class]="subPart.icon" class="link_icon"></i>
               <span class="link_name">{{subPart.link_name}}</span>
-              <i class="fa fa-angle-down text-gray-400 text-sm font-semibold mr-1 absolute" [ngClass]="layoutService.direction=='ltr'?'right-0':'left-0'"
-                style="font-size:12px;" *ngIf="openSidebar"></i>
+              <i class="fa fa-angle-down text-gray-400 text-sm font-semibold mr-1 absolute"
+                [ngClass]="layoutService.direction=='ltr'?'right-0':'left-0'" style="font-size:12px;"
+                *ngIf="layoutService.openSidebar"></i>
             </a>
             <ul class="sub-menu">
               <li #itemEl2 *ngFor="let item_sub of subPart.sub_menu">
@@ -48,13 +50,14 @@
             </ul>
           </li>
         </ul>
-  
+
       </li>
     </ul>
-  
+
     <div style="height:10%;" class="flex flex-row items-center justify-center py-5">
-      <button class="btn-docs w-full mx-5" *ngIf="openSidebar">Docs & Components</button>
-      <div *ngIf="!openSidebar" style="height:40px; width:50px; background-color: #009ef7;" class="mx-3 rounded-lg"></div>
+      <button class="btn-docs w-full mx-5" *ngIf="layoutService.openSidebar">Docs & Components</button>
+      <div *ngIf="!layoutService.openSidebar" style="height:40px; width:50px; background-color: #009ef7;" class="mx-3 rounded-lg">
+      </div>
     </div>
   </div>
   <section class="home-section">
@@ -64,18 +67,18 @@
         [ngClass]="layoutService.darkMode ? '': 'border-b border-gray-300'">
         <div class="w-1/2 flex flex-row">
           <div class="hamburger-menu">
-            <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="openSidebar" />
+            <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="layoutService.openSidebar" (click)="checkSidebar(!layoutService.openSidebar)"/>
             <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
-              <i class="fa fa-angle-right text-gray-700" *ngIf="openSidebar"></i>
-              <i class="fa fa-bars text-gray-700" *ngIf="!openSidebar"></i>
+              <i class="fa fa-angle-right text-gray-700" *ngIf="layoutService.openSidebar"></i>
+              <i class="fa fa-bars text-gray-700" *ngIf="!layoutService.openSidebar"></i>
             </label>
           </div>
-          <div class="flex flex-row">
+          <div class="flex-row hidden lg:flex">
             <div class="dropdown">
               <button class="dropbtn mx-1">Dashboards</button>
               <div class="dropdown-content" style="min-width:800px;"
                 [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
-               <app-dashboards-header-dropdown></app-dashboards-header-dropdown>
+                <app-dashboards-header-dropdown></app-dashboards-header-dropdown>
               </div>
             </div>
             <div class="dropdown">
@@ -106,25 +109,33 @@
             </div>
           </div>
         </div>
-  
-        <div *ngIf="avatarDropdown==true"
-          style="position:absolute; top:65px; border-radius:5px; z-index:1111;"
-          class="bg-white rounded-xl py-2 px-5"  [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white', layoutService.direction == 'ltr' ? 'right-5': 'left-5']">
-            <app-profile-header-dropdown></app-profile-header-dropdown>
+
+        <div *ngIf="avatarDropdown==true" style="position:absolute; top:65px; border-radius:5px; z-index:1111;"
+          class="bg-white rounded-xl py-2 px-5"
+          [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white', layoutService.direction == 'ltr' ? 'right-5': 'left-5']">
+          <app-profile-header-dropdown></app-profile-header-dropdown>
         </div>
-        <div class="w-1/2 text-sm flex flex-row justify-end items-center">
-          <app-layout-change></app-layout-change>
-          <app-mode-change></app-mode-change>
-          <i class="fa fa-search mx-3 text-gray-300"></i>
-          <i class="fa fa-message mx-3 text-gray-300"></i>
-          <i class="fa fa-comments mx-3 text-gray-300"></i>
-          <i class="fa fa-search mx-3 text-gray-300"></i>
-          <i class="fa fa-message mx-3 text-gray-300"></i>
-          <i class="fa fa-comments mx-3 text-gray-300"></i>
-          <img src="assets/avatar.jpg" class="avatar mx-3" (click)="avatarDropdown=!avatarDropdown;">
+        <div class="w-1/2 text-sm flex flex-col lg:flex-row justify-end items-center">
+          <div class="flex flex-col lg:flex-row items-center">
+            <div class="my-2 lg:my-0">
+              <app-layout-change></app-layout-change>
+            </div>
+            <div class="my-2 lg:my-0">
+              <app-mode-change></app-mode-change>
+            </div>
+          </div>
+          <div class="hidden lg:flex flex-row items-center">
+            <i class="fa fa-search mx-3 text-gray-300"></i>
+            <i class="fa fa-message mx-3 text-gray-300"></i>
+            <i class="fa fa-comments mx-3 text-gray-300"></i>
+            <i class="fa fa-search mx-3 text-gray-300"></i>
+            <i class="fa fa-message mx-3 text-gray-300"></i>
+            <i class="fa fa-comments mx-3 text-gray-300"></i>
+            <img src="assets/avatar.jpg" class="avatar mx-3" (click)="avatarDropdown=!avatarDropdown;">
+          </div>
         </div>
       </div>
-  
+
       <!-- routing section -->
       <div class="grow flex flex-row" [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
         <div class="h-full w-full">
@@ -133,7 +144,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Scroll top -->
   <div class="scroll-top" (click)="onActivate()"></div>
 </div>

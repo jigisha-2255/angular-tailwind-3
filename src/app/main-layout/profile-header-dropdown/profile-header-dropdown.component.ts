@@ -7,7 +7,8 @@ import { MainLayoutService } from '../main-layout.service';
   styleUrls: ['./profile-header-dropdown.component.scss']
 })
 export class ProfileHeaderDropdownComponent implements OnInit {
-  userEmail=localStorage.getItem('LoggedInUser');
+  // userEmail=localStorage.getItem('LoggedInUser');
+  userEmail="john@doe.com";
   constructor(public layoutService:MainLayoutService) { }
 
   ngOnInit(): void {

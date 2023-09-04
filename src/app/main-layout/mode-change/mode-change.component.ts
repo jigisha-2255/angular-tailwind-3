@@ -13,7 +13,7 @@ export class ModeChangeComponent implements OnInit {
 
   ngOnInit(): void {
     this.layoutService.darkMode=JSON.parse(localStorage.getItem('mode') || '{}');
-    console.log(typeof(this.layoutService.darkMode));
+    // console.log(typeof(this.layoutService.darkMode));
   }
   changeMode(){
     this.layoutService.darkMode=!this.layoutService.darkMode;
