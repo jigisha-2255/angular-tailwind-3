@@ -215,22 +215,6 @@
         </div>
     </div>
     <div class="w-49">
-        <div class="rounded-lg flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">
-            <div class="flex flex-col justify-between">
-                <div class="flex flex-row justify-between mb-5">
-                    <div>
-                        <h1 class="font-bold">Recent Statistics</h1>
-                        <div class="text-sm text-gray-400 font-semibold">More than 400 new members</div>
-                    </div>
-                    <div class="flex flex-row items-center">
-                        <i class="fa fa-dashboard text-gray-500"></i>
-                    </div>
-                </div>
-                <div class="chart-container w-full h-full flex flex-row items-center justify-center mx-auto">
-                    <canvas id="MyChart" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']">{{ chart }}</canvas>
-                </div>
-            </div>
-        </div>
         <div class="rounded-lg mt-7 flex flex-col p-7" [ngClass]="[layoutService.darkMode ? 'bg-black': 'bg-white']"> 
             <div class="flex flex-col justify-between">
                 <div class="flex flex-row justify-between mb-5">

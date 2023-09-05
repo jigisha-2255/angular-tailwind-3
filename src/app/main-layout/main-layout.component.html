@@ -63,8 +63,8 @@
   <section class="home-section">
     <div class="grow flex flex-col" [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
       <!-- Header -->
-      <div class="flex flex-row items-center justify-between py-3 px-4"
-        [ngClass]="layoutService.darkMode ? '': 'border-b border-gray-300'">
+      <div class="flex flex-row items-center justify-between py-3 px-4 sticky top-0 z-10 header-shadow"
+        [ngClass]="layoutService.darkMode ? 'dark-mode': 'light-mode'">
         <div class="w-1/2 flex flex-row">
           <div class="hamburger-menu">
             <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="layoutService.openSidebar" (click)="checkSidebar(!layoutService.openSidebar)"/>
@@ -76,7 +76,7 @@
           <div class="flex-row hidden lg:flex">
             <div class="dropdown">
               <button class="dropbtn mx-1">Dashboards</button>
-              <div class="dropdown-content" style="min-width:800px;"
+              <div class="dropdown-content" style="min-width:900px;"
                 [ngClass]="layoutService.darkMode ? 'bg-black': 'bg-white'">
                 <app-dashboards-header-dropdown></app-dashboards-header-dropdown>
               </div>

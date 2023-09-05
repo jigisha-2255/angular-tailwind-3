@@ -8,6 +8,10 @@ import { ConnectionsComponent } from './connections/connections.component';
 import { ActivityComponent } from './profile/activity/activity.component';
 import { FollowersComponent } from './profile/followers/followers.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { RadarChartComponent } from './radar-chart/radar-chart.component';
+import { FormsModule } from '@angular/forms';
+// import { ChartsModule, NgChartsModule } from 'ng2-charts';
+import { RadarChartsComponent } from './radar-chart/radar-chart';
 
 @NgModule({
   declarations: [
@@ -17,11 +21,16 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     ConnectionsComponent,
     ActivityComponent,
     FollowersComponent,
+    RadarChartComponent,
+    RadarChartsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CanvasJSAngularChartsModule
+    CanvasJSAngularChartsModule,
+    FormsModule,
+    // ChartsModule, 
+    // NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

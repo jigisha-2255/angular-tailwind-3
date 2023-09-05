@@ -1,36 +1,16 @@
 <div class="dropdown flex flex-row w-full" [dir]="layoutService.direction">
     <div class="flex flex-row">
-      <div class="flex flex-col w-3/4 p-5">
-        <div class="flex flex-row w-full border-b">
-          <div class="w-1/2">
-            <h1 class="text-md font-semibold">Layouts</h1>
-            <ul class="text-gray-500 ml-5">
-              <li class="my-3" (click)="sidebg='#fff'">Light Sidebar</li>
-              <li class="my-3" (click)="sidebg='#1e1e2d'">Dark Sidebar</li>
-              <li class="my-3" (click)="headerbg='rgb(243 244 246 / 1)'">Light Header</li>
-              <li class="my-3" (click)="headerbg='#1e1e2d'">Dark Header</li>
-            </ul>
-          </div>
-          <div class="w-1/2">
-            <h1 class="text-md font-semibold">Toolbars</h1>
-            <ul class="text-gray-500 ml-5">
-              <li class="my-3">Classic</li>
-              <li class="my-3">Saas</li>
-              <li class="my-3">Accounting</li>
-              <li class="my-3">Extended</li>
-              <li class="my-3">Reports</li>
-            </ul>
-          </div>
-          <div class="w-1/2">
-            <h1 class="text-md font-semibold">Asides</h1>
-            <ul class="text-gray-500 ml-5">
-              <li class="my-3">Filters</li>
-              <li class="my-3">Segments</li>
-              <li class="my-3">Shipment History</li>
-              <li class="my-3">Courier Activity</li>
-              <li class="my-3">Calendar</li>
-            </ul>
-          </div>
+      <div class="flex flex-col w-3/4 px-5">
+        <div class="flex flex-wrap justify-between w-full border-b">
+            <a href="{{menu.link}}" [ngClass]="{'active-tabs':router.url==menu.link}" class="flex p-2 flex-row w-1/2 my-2 px-5" *ngFor="let menu of headerMenu">
+              <div class="w-1/4 flex flex-row justify-center items-center rounded-md mr-5" [ngClass]="layoutService.darkMode ? 'bg-gray-700': 'bg-gray-200'">
+                <i class="fa fa-dashboard text-xl"></i>
+              </div>
+              <div class="flex flex-col w-3/4">
+                <p class="text-sm font-semibold">{{menu.heading}}</p>
+                <p class="text-sm text-gray-400 font-semibold">{{menu.subheading}}</p>
+              </div>
+            </a>
         </div>
         <div class="flex flex-row py-5" style="width:100%;">
           <div class="w-1/2">
@@ -45,12 +25,10 @@
           </div>
         </div>
       </div>
-      <div class="w-1/4 p-5"  [ngClass]="layoutService.darkMode ? 'bg-gray-700': 'bg-gray-300'">
+      <div class="w-1/4 p-5" [ngClass]="layoutService.darkMode ? 'bg-gray-700': 'bg-gray-200'">
         <h1 class="text-md font-semibold">More Dashboards</h1>
-        <ul class="text-gray-500 ml-5">
-          <li class="my-3">Logistics</li>
-          <li class="my-3">Website Analytics</li>
-          <li class="my-3">Finance Performance</li>
+        <ul class="text-gray-500 ml-5 list-none">
+          <li class="my-2" *ngFor="let dashboard of dashboards">{{dashboard.heading}}</li>
         </ul>
       </div>
     </div>

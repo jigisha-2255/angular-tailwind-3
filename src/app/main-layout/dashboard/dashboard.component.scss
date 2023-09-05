@@ -1,0 +1,56 @@
+.btn{
+    background:#009ef7; 
+    color:#fff;
+    padding:10px 15px;
+    border-radius: 10px;
+    font-size:13px;
+}
+.bg-follow{
+    background-color: #f0f0f0;
+    color:gray;
+}
+.w-49{
+    width:49%;
+}
+.w-29{
+    width:29%;
+}
+.w-69{
+    
+}
+.bg-black{
+    background-color: #1c1c1c;
+}
+.active-tabs{
+    border:1px dashed lightgray!important;
+    border-bottom:4px solid #009ef7!important;
+}
+.card-img{
+    height:50px;
+    width:50px;
+}
+.inProcess{
+    color:#3E97FF;
+    background-color: #f1faff;
+}
+.onHold{
+    color:#ffc700;
+    background-color: #fff8dd;
+}
+.completed{
+    color:#50cd89;
+    background-color: #e8fff3;
+}
+.profit{
+    color:#50cd89;
+    background-color: #e8fff3;
+}
+.loss{
+    color:#f1416c;
+    background-color: #fff5f8;
+}
+@media(max-width:1200px){
+    .w-49{
+        width:100%;
+    }
+}

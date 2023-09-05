@@ -10,7 +10,7 @@ import { MainLayoutService } from 'src/app/main-layout/main-layout.service';
 export class OverviewComponent implements OnInit {
   public chart: any;
   constructor(public layoutService:MainLayoutService) { }
-
+  
   ngOnInit(): void {
     this.createChart();
   }

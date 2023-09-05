@@ -651,6 +651,9 @@ ul.tabslist li {
     }
 }
 
+.header-shadow{
+    box-shadow:0px 8px 14px rgba(15, 42, 81, 0.04);
+}
 .active-tab,
 .active-tabs {
     border-bottom: 2px solid #009ef7;
@@ -675,5 +678,8 @@ ul.tabslist li {
     border: 1px dashed #393945;
 }
 .bg-black{
-    background-color: #1c1c1c;
+    background-color: #1c1c1c!important;
+}
+.bg-white{
+    background-color: #fff;
 }

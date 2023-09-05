@@ -115,7 +115,6 @@
 .dropdown:hover .dropbtn {
     color: #009ef7;
 }
-
 /* Hoverable Dropdown */
 ul li {
     list-style: disc;
@@ -125,5 +124,10 @@ ul li {
     background: #009ef7;
     color: #fff;
     padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.active-tabs{
+    background-color: lightgray;
     border-radius: 10px;
 }
